@@ -2,7 +2,7 @@ package accenture;
 
 import java.util.Scanner;
 
-public class solution {
+public class question1 {
     public static int ratcount(int r, int unit, int n, int[] arr){
         if(arr == null){
             return -1;
