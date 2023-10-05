@@ -10,7 +10,9 @@ public class NQueensBacktracking {
         scanner.close();
 
         int[][] board = new int[N][N];
+        System.out.println("Step-by-step process of placing queens:\n");
         if (solveNQueens(board, 0, N)) {
+            System.out.println("\nFinal solution:");
             printSolution(board);
         } else {
             System.out.println("No solution exists.");
@@ -25,9 +27,12 @@ public class NQueensBacktracking {
         for (int row = 0; row < N; row++) {
             if (isSafe(board, row, col, N)) {
                 board[row][col] = 1;
+                System.out.println("Placing queen at row " + (row + 1) + ", column " + (col + 1) + "\n");
+                printBoard(board);
                 if (solveNQueens(board, col + 1, N)) {
                     return true;
                 }
+                System.out.println("Backtracking at row " + (row + 1) + ", column " + (col + 1) + "\n");
                 board[row][col] = 0; // Backtrack
             }
         }
@@ -65,5 +70,16 @@ public class NQueensBacktracking {
             System.out.println();
         }
     }
-}
 
+    static void printBoard(int[][] board) {
+        int N = board.length;
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+//                System.out.print((board[i][j] == 1) ? "Q " : "- ");
+                System.out.print(board[i][j] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
+}
